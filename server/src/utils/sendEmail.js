@@ -2,7 +2,6 @@ import nodemailer from "nodemailer";
 
 export const sendEmail = async (to, subject, text) => {
   try {
-    // Check if credentials are configured
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
       console.warn('⚠️  EMAIL_USER or EMAIL_PASS not configured. Skipping email...');
       return true;
