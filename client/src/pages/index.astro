@@ -11,6 +11,7 @@ import Footer from "../components/Footer.astro";
 import UpcomingEvents from "../components/UpcomingEvents.astro";
 import HowItWorks from "../components/HowItWorks.astro";
 import Stats from "../components/Stats.astro";
+import { API_BASE_URL } from "../config";
 
 ---
 
@@ -49,12 +50,12 @@ import Stats from "../components/Stats.astro";
     <Footer />
 </Layout>
 
-<script>
+<script define:vars={{ API_BASE_URL }}>
     import api from "../lib/api";
 
     async function checkAuth() {
         try {
-            const response = await api.get("/api/user/me");
+            const response = await api.get(`${API_BASE_URL}/api/user/me`);
 
             if (response.data.success) {
                 window.location.href = "/exploreEvents";
