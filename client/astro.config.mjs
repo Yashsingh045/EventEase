@@ -8,7 +8,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     define: {
-      'import.meta.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL || 'https://eventease-yxw8.onrender.com'),
+      'import.meta.env.VITE_API_URL': JSON.stringify(process.env.VITE_API_URL),
     },
   },
 });
