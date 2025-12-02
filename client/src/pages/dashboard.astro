@@ -6,6 +6,7 @@ import EventModal from "../components/dashboard/EventModal.astro";
 import TicketModal from "../components/dashboard/TicketModal.astro";
 import ProfileSettings from "../components/dashboard/ProfileSettings.astro";
 import ToastContainer from "../components/dashboard/ToastContainer.astro";
+import EventCalendar from "../components/EventCalendar.astro";
 
 const url = new URL(Astro.request.url);
 const tokenFromUrl = url.searchParams.get("token");
@@ -174,16 +175,7 @@ if (!hasToken) {
                     >
                         Event Calendar
                     </h1>
-                    <div
-                        class="text-center py-16 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-                    >
-                        <p
-                            class="text-gray-500 text-lg font-bold uppercase tracking-wide"
-                            style="font-family: 'Poppins', sans-serif;"
-                        >
-                            Calendar view coming soon
-                        </p>
-                    </div>
+                    <EventCalendar />
                 </div>
                 <div id="past-page" class="page-content hidden">
                     <h1
@@ -287,11 +279,11 @@ if (!hasToken) {
 
             function handleOAuthToken() {
                 const urlParams = new URLSearchParams(window.location.search);
-                const token = urlParams.get('token');
-                
+                const token = urlParams.get("token");
+
                 if (token) {
                     document.cookie = `token=${token}; path=/; max-age=${24 * 60 * 60}; SameSite=Lax`;
-                    
+
                     const newUrl = window.location.pathname;
                     window.history.replaceState({}, document.title, newUrl);
                 }
