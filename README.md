@@ -7,7 +7,7 @@ EventEase is a cutting-edge, full-stack event management platform built with mod
 [![Astro](https://img.shields.io/badge/Astro-Latest-FF5D01?style=for-the-badge&logo=astro)](https://astro.build/)
 [![Node.js](https://img.shields.io/badge/Node.js-Latest-339933?style=for-the-badge&logo=node.js)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Latest-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1.17-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![Prisma](https://img.shields.io/badge/Prisma-Latest-2D3748?style=for-the-badge&logo=prisma)](https://www.prisma.io/)
 
 ---
@@ -25,8 +25,11 @@ EventEase is a cutting-edge, full-stack event management platform built with mod
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
 - **Database Agnostic**: Prisma ORM for seamless database operations
 
-### **Enterprise-Grade Security**
+### **Enterprise-Grade Security & Features**
+- **OAuth Integration**: Secure login with Google and GitHub via Passport.js
 - **JWT Authentication**: Secure user authentication and authorization
+- **Email Notifications**: Automated emails using Nodemailer
+- **Performance Caching**: High-performance caching with Redis
 - **Data Protection**: Industry-standard security practices
 - **Role-Based Access**: Granular permission system for different user types
 
@@ -44,9 +47,8 @@ EventEase is a cutting-edge, full-stack event management platform built with mod
 ```
 ├── Astro                 # Static site generator with islands architecture
 ├── TypeScript            # Type-safe JavaScript superset
-├── Tailwind CSS 3.4.17   # Utility-first CSS framework
-├── React Components      # Interactive components when needed
-├── GSAP                  # Animation library
+├── Tailwind CSS 4.1.17   # Utility-first CSS framework
+├── DaisyUI 5.5.0         # Component library for Tailwind CSS
 └── Astro Routing         # File-based routing system
 ```
 
@@ -55,6 +57,9 @@ EventEase is a cutting-edge, full-stack event management platform built with mod
 ├── Node.js               # JavaScript runtime
 ├── Express.js            # Web application framework
 ├── Prisma ORM            # Database toolkit
+├── Redis                 # In-memory data structure store
+├── Nodemailer            # Email sending service
+├── Passport.js           # Authentication middleware
 ├── JWT                   # Authentication tokens
 └── RESTful APIs          # Modern API design
 ```
@@ -72,6 +77,7 @@ EventEase is a cutting-edge, full-stack event management platform built with mod
 ### Prerequisites
 - **Node.js** (v18.0.0 or higher)
 - **npm** (v8.0.0 or higher)
+- **Redis** (Latest stable version)
 - **Git** for version control
 
 ### Installation
@@ -105,8 +111,8 @@ cd server && npm run dev
 ```
 
 ### Access the Application
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:5000
+- **Frontend**: http://localhost:4321
+- **Backend API**: http://localhost:3000
 - **Database Studio**: http://localhost:5555 (run `npx prisma studio`)
 - **ER Diagram**: (run `npm run createER` to create and `npm run showER` to view)
 
@@ -118,20 +124,26 @@ cd server && npm run dev
 EventEase/
 ├── client/                 # Astro frontend
 │   ├── src/
-│   │   ├── components/     # Reusable UI components (Astro & React)
+│   │   ├── components/     # Reusable UI components
 │   │   ├── pages/          # Route pages (file-based routing)
 │   │   ├── layouts/        # Page layouts
 │   │   ├── lib/            # Utility functions
-│   │   └── assets/         # Static resources
+│   │   ├── assets/         # Static resources
+│   │   └── config.js       # Client configuration
 │   ├── public/             # Public assets
 │   └── package.json
 │
 ├── server/                 # Node.js backend
 │   ├── src/
-│   │   ├── routes/         # API routes
-│   │   ├── controllers/    # Business logic
-│   │   ├── models/         # Database models
-│   │   └── middleware/     # Custom middleware
+│   │   ├── auth/           # Authentication logic
+│   │   ├── event/          # Event management
+│   │   ├── registration/   # Event registration
+│   │   ├── ticket/         # Ticket generation
+│   │   ├── users/          # User management
+│   │   ├── review/         # Review system
+│   │   ├── routes/         # Main route definitions
+│   │   ├── utils/          # Helper functions
+│   │   └── DB/             # Database connection
 │   ├── prisma/             # Database schema
 │   └── package.json
 │
@@ -191,10 +203,10 @@ npm run studio       # Open Prisma Studio
 ## 👥 Team & Contribution
 
 ### **Core Team**
-- **Aditya Prakash** – [Aditya.Prakash@adypu.edu.in](mailto:Aditya.Prakash@adypu.edu.in)  
-- **Abhay Pratap Yadav** – [Abhaypratap.Yadav@adypu.edu.in](mailto:Abhaypratap.Yadav@adypu.edu.in)  
-- **Saubhagya Anubhav** – [Saubhagya.Anubhav@adypu.edu.in](mailto:Saubhagya.Anubhav@adypu.edu.in)  
-- **Yashveer Singh** – [yashveer.singh@adypu.edu.in](mailto:yashveer.singh@adypu.edu.in)  
+- 🎓 **Aditya Prakash** – [Aditya.Prakash@adypu.edu.in](mailto:Aditya.Prakash@adypu.edu.in)  
+- 🎓 **Abhay Pratap Yadav** – [Abhaypratap.Yadav@adypu.edu.in](mailto:Abhaypratap.Yadav@adypu.edu.in)  
+- 🎓 **Yashveer Singh** – [yashveer.singh@adypu.edu.in](mailto:yashveer.singh@adypu.edu.in)  
+- 🎓 **Saubhagya Anubhav** – [Saubhagya.Anubhav@adypu.edu.in](mailto:Saubhagya.Anubhav@adypu.edu.in)  
 
 ### **Contributing**
 We welcome contributions! Please read our contributing guidelines and code of conduct.
@@ -219,10 +231,9 @@ cd server && npm run build
 ```
 
 ### **Deployment Options**
-- **Vercel/Netlify**: For frontend deployment
-- **Railway/Heroku**: For full-stack deployment
-- **AWS/GCP**: For scalable cloud deployment
-- **Docker**: Containerized deployment ready
+- **Vercel**: For frontend deployment
+- **Render**: For full-stack deployment
+
 
 ---
 
@@ -237,18 +248,18 @@ cd server && npm run build
 - Calendar integration
 
 ### **Phase 2: Advanced Features**
-- [ ] AI-powered event recommendations
-- [ ] Real-time notifications
-- [ ] Advanced analytics dashboard
-- [ ] Mobile app development
+- [x] AI-powered event recommendations
+- [x] Real-time notifications
+- [x] Advanced analytics dashboard
+- [x] Mobile app development
 
 - QR code generation
 
 ### **Phase 3: Enterprise Features**
-- [ ] Multi-tenant architecture
-- [ ] Advanced security features
-- [ ] Third-party integrations
-- [ ] White-label solutions
+- [x] Multi-tenant architecture
+- [x] Advanced security features
+- [x] Third-party integrations
+- [x] White-label solutions
 
 ---
 
@@ -270,6 +281,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Built with ❤️ by the EventEase Team**
 
-[Website](https://eventease.com) • [Documentation](https://docs.eventease.com) • [Support](mailto:support@eventease.com)
+[Website](https://eventease.abdev.co.in) • [Documentation](https://docs.eventease.com) • [Support](mailto:support@eventease.com)
 
 </div>
