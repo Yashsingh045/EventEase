@@ -14,12 +14,12 @@ api.interceptors.request.use((config) => {
   // Try to get token from cookie
   const cookies = document.cookie.split(';');
   const tokenCookie = cookies.find(c => c.trim().startsWith('token='));
-  
+
   if (tokenCookie) {
-    const token = tokenCookie.split('=')[1];
+    const token = tokenCookie.trim().substring(6);
     config.headers.Authorization = `Bearer ${token}`;
   }
-  
+
   return config;
 });
 
