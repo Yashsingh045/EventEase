@@ -11,7 +11,7 @@ dotenv.config();
 const allowedOrigins = [
   'http://localhost:4321',
   'https://eventease.abdev.co.in',
-  'https://eventease-silk.vercel.app/',
+  'https://eventease-silk.vercel.app',
   process.env.CLIENT_URL,
 ].filter(Boolean);
 
