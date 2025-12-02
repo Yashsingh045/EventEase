@@ -11,14 +11,14 @@ dotenv.config();
 const allowedOrigins = [
   'http://localhost:4321',
   'https://eventease.abdev.co.in',
-  'https://eventease.vercel.app',
+  'https://eventease-silk.vercel.app/',
   process.env.CLIENT_URL,
 ].filter(Boolean);
 
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
-    
+
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
