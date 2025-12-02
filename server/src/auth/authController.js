@@ -143,7 +143,7 @@ export const completeProfile = async (req, res) => {
 export const oauthCallback = (req, res) => {
   try {
     const user = req.user;
-    const clientUrl = process.env.CLIENT_URL || "http://localhost:4321";
+    const clientUrl = process.env.CLIENT_URL;
 
     if (!user.isProfileComplete) {
       const tempToken = jwt.sign(
@@ -171,14 +171,14 @@ export const oauthCallback = (req, res) => {
   } catch (error) {
     console.error("OAuth Callback Error:", error);
     res.redirect(
-      `${process.env.CLIENT_URL || "http://localhost:4321"}/login?error=auth_failed`,
+      `${process.env.CLIENT_URL}/login?error=auth_failed`,
     );
   }
 };
 
 export const oauthFailure = (req, res) => {
   res.redirect(
-    `${process.env.CLIENT_URL || "http://localhost:4321"}/login?error=auth_failed`,
+    `${process.env.CLIENT_URL}/login?error=auth_failed`,
   );
 };
 
