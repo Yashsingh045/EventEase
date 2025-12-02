@@ -8,8 +8,23 @@ import routes from "./src/routes/index.js";
 
 dotenv.config();
 
+const allowedOrigins = [
+  'http://localhost:4321',
+  'https://eventease.abdev.co.in',
+  'https://eventease.vercel.app',
+  process.env.CLIENT_URL,
+].filter(Boolean);
+
 const corsOptions = {
-  origin: process.env.CLIENT_URL || "http://localhost:4321",
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   optionsSuccessStatus: 200,
 };
